@@ -1,0 +1,152 @@
+[
+  {
+    "connection_key": "bac0ddf0a6b7d28c18cd288430dbf52883257a87ad81a32d85c1f9f30dc604a1",
+    "name": "ch_ED733E60",
+    "engine": "clickhouse",
+    "sql": {
+      "database": "default",
+      "db_schema": null,
+      "user": "Z0FBQUFBQnBjalhDQnlLS3QzWUZ2UEFRU1B5SENNdk9CQTlXY0RIanZjd1RqUzBHdDRaeEd4S1NlR3FBRmZjSmUyZC1IRldlMTN3VWRteVBvUW5mbFkyTllEYVJDQlhVbUE9PQ==",
+      "password": "Z0FBQUFBQnBjalhDaFlzeTAyVGpUd1hjYXBoNVZ0ckplSGRqUmVIS1dwMG1oNDg1UmlLeWMzNGpsZU5CQ0VpLXVJZGlKbjJZZGg2c0hoek0xcG9mcGNjcTNXdW9KQkExWEE9PQ==",
+      "dbms_port": 9440,
+      "dbms_host": "https://play.clickhouse.com",
+      "cp": "utf8"
+    },
+    "ssl": {
+      "ssl_mode": null,
+      "ssl_cert": null,
+      "ssl_key": null,
+      "ssl_root_cert": null
+    },
+    "file": {
+      "directory": null,
+      "pattern": null,
+      "include_subdirectories": null,
+      "consolidate_files": null,
+      "load_to_memory": null,
+      "cache": null
+    },
+    "custom_options": null,
+    "no_credentials": false
+  },
+  {
+    "connection_key": "b2619a5c570793c4057cae750f31d34caf086ba2b29233d6447bf0c812016ba4",
+    "name": "mysl_ED733E60",
+    "engine": "mysql",
+    "sql": {
+      "database": "adventureworks",
+      "db_schema": "adventureworks",
+      "user": "Z0FBQUFBQnBjalhDcDRIM2VkQ1JPZy1QSjRFaDE0a2dfODdlZllLMjluU1NpZDJxbno4Wm4zQ3otY3dXUVphMVo1RHlOWmtWdjBNTzQyZWJ2ek12Tk9OaGV6TDhacHlEY1E9PQ==",
+      "password": "Z0FBQUFBQnBjalhDM01aLXIyUUdZZ3RUY3lSeHEwTUpIdmlDVnhYUThnUDdJb09CZEhxVGRsMU0yWUxXQjJZVnNfbloxSGdvYTFJa3FJaGVUMXZkb21neEE0ZGU3WXFxazJWTE42WU95aVdzUlNDalpsQjdyZDQ9",
+      "dbms_port": 53306,
+      "dbms_host": "89.169.162.67",
+      "cp": "utf8"
+    },
+    "ssl": {
+      "ssl_mode": null,
+      "ssl_cert": null,
+      "ssl_key": null,
+      "ssl_root_cert": null
+    },
+    "file": {
+      "directory": null,
+      "pattern": null,
+      "include_subdirectories": null,
+      "consolidate_files": null,
+      "load_to_memory": null,
+      "cache": null
+    },
+    "custom_options": null,
+    "no_credentials": false
+  },
+  {
+    "connection_key": "bc0d16b6e3812b1b1c9e10225e57d638a23c35d6c123ed3ebc0eceaa28767665",
+    "name": "pgl_ED733E60",
+    "engine": "postgres",
+    "sql": {
+      "database": "postgres",
+      "db_schema": "person",
+      "user": "Z0FBQUFBQnBjalhDQWxqa01LbUR2YmhoeUVzaUo2eHZ6a2I1Wk0xU2RCTnNqNnFMb1FxV1NfeWdjR1QycUZnWGItcm1iaFMxUE9WeXVubTgxUktzelNpY1ZRNGd3TFRLMWc9PQ==",
+      "password": "Z0FBQUFBQnBjalhDZGg5eFlfRm9NZ0tLdjBCTFNuUm5vZ2NlbG9FR0pGdlI1dWJCSmlrWXdJdzBaN29kbXZPa084ejBIdjRudUttT09BenJVdGEtUmc5TnRfLU0wU1dmOUFzaG9tNWpnNzJqNUppczU1TFd1OVk9",
+      "dbms_port": 55432,
+      "dbms_host": "89.169.162.67",
+      "cp": "utf8"
+    },
+    "ssl": {
+      "ssl_mode": null,
+      "ssl_cert": null,
+      "ssl_key": null,
+      "ssl_root_cert": null
+    },
+    "file": {
+      "directory": null,
+      "pattern": null,
+      "include_subdirectories": null,
+      "consolidate_files": null,
+      "load_to_memory": null,
+      "cache": null
+    },
+    "custom_options": null,
+    "no_credentials": false
+  },
+  {
+    "connection_key": "cd7d5740a5eea909eaf5d186284d3ed3196b53fc17246d008afd02c94d865862",
+    "name": "ora_ED733E60",
+    "engine": "oracle",
+    "sql": {
+      "database": "FREE",
+      "db_schema": "C##AdvWorks",
+      "user": "Z0FBQUFBQnBjalhDa0RKcEF3c1g5MTQ0Q0toV0ZPZ3ljZDVUOWctcmFsQ3RTbS0xbWJoRWkwMjUxd0oteHlOb0F2VGh3b3ZqeThyRVJqSFhnZ0JtSnRBczRDV1ZkVlBKd0E9PQ==",
+      "password": "Z0FBQUFBQnBjalhDMTlLNzB1cGRZcm9hRWNIWC1IXzVraVpCTDdsbWE0VEtRbkZjRmFOeWpSNGRGZHFveVpVSHo4OXVXUDNJd3lsUm90dnNSRHJrTlNoUWhQTFRsSWp0VHc9PQ==",
+      "dbms_port": 51521,
+      "dbms_host": "89.169.162.67",
+      "cp": "utf8"
+    },
+    "ssl": {
+      "ssl_mode": null,
+      "ssl_cert": null,
+      "ssl_key": null,
+      "ssl_root_cert": null
+    },
+    "file": {
+      "directory": null,
+      "pattern": null,
+      "include_subdirectories": null,
+      "consolidate_files": null,
+      "load_to_memory": null,
+      "cache": null
+    },
+    "custom_options": null,
+    "no_credentials": false
+  },
+  {
+    "connection_key": "f16dde97407fc379edc4abcfef5879c3fc4efb55e2b156a0623e31d64d23afcb",
+    "name": "mssl_ED733E60",
+    "engine": "mssql",
+    "sql": {
+      "database": "AdventureWorksDW",
+      "db_schema": "dbo",
+      "user": "Z0FBQUFBQnBjalhDNGUzdE1MaENPS1ZJLWtoTzJJbU5Reml0dWdMUkFaMkRfRXMxMzB0bTY2UUFDUlQwNm14eFYyeUhpaEd1am1wRW4wNnZyaW1tRHhnQjh6QmdaY09UdFE9PQ==",
+      "password": "Z0FBQUFBQnBjalhDbC0yYjNnN3U3MkVfSmVxMG5mTDV1NEduS2xCcmVwUmdLZXBiQWo4cmNBTENIcVV6NnZ4UzZLdHdQSlhaamhWd1BXbndORDhXU2lUS25NTzc2NGhqT3pSZXZ1NkNOM25FVHdoaDZPNEhOS0U9",
+      "dbms_port": 51433,
+      "dbms_host": "89.169.162.67",
+      "cp": "utf8"
+    },
+    "ssl": {
+      "ssl_mode": null,
+      "ssl_cert": null,
+      "ssl_key": null,
+      "ssl_root_cert": null
+    },
+    "file": {
+      "directory": null,
+      "pattern": null,
+      "include_subdirectories": null,
+      "consolidate_files": null,
+      "load_to_memory": null,
+      "cache": null
+    },
+    "custom_options": null,
+    "no_credentials": false
+  }
+]
