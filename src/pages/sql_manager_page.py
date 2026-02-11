@@ -4,6 +4,7 @@ from selenium.webdriver.support.ui import Select, WebDriverWait
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.action_chains import ActionChains
+from typing import Optional
 from .base_page import BasePage
 
 
@@ -15,32 +16,34 @@ class SqlManagerPage(BasePage):
 
     def __init__(self, driver):
         super().__init__(driver, timeout=10)
+        self.query_name = None
+        self.card = None
 
-    HIDE_TREE_BTN = (
+    TOGGLE_LEFT_PANEL_BUTTON = (
         By.XPATH,
-        "//body/div[@id='text-res']/div/button[@id='btnHideTree']",
+        "//button[@data-testid='sql-manager-toggle-left-panel']"
     )
 
-    def toggle_tree_panel(self):
+    def toggle_left_panel_panel(self):
         """Кликает кнопку 'скрыть/показать боковую панель'."""
         self._log("toggle_tree_panel")
-        self._js_click_locator(self.HIDE_TREE_BTN)
+        self._js_click_locator(self.TOGGLE_LEFT_PANEL_BUTTON)
 
-    ADD_QUERY_BTN = (
+    ADD_QUERY_OPEN_BUTTON = (
         By.XPATH,
-        "//body/div[@id='text-res']/div/button[@id='btnAddQuery']",
+        "//button[@data-testid='sql-manager-add-query-open']"
     )
-    ADD_QUERY_INPUT = (
-        By.XPATH,
-        "//input[@id='dialog-menu-name-sqlreq' and @class='dialog-input']",
+    ADD_QUERY_NAME_INPUT = (
+        By.CSS_SELECTOR,
+        "input[data-testid='sql-manager-add-query-name']"
     )
-    ADD_QUERY_CONFIRM = (
+    ADD_QUERY_CONFIRM_BUTTON = (
         By.XPATH,
-        "//button[@id='btn-add-request' and @class='btn btn-primary']",
+        "//button[@data-testid='sql-manager-add-query-confirm']"
     )
-    ADD_QUERY_CANCEL = (
+    ADD_QUERY_CANCEL_BUTTON = (
         By.XPATH,
-        "//button[@id='btn-cancel-request' and @class='btn btn-secondary']",
+        "//button[@data-testid='sql-manager-add-query-cancel']"
     )
 
     def add_query(self, query_name: str):
@@ -56,7 +59,7 @@ class SqlManagerPage(BasePage):
     def click_add_query_button(self):
         """Кликает по кнопке 'Добавить запрос'."""
         self._log("click_add_query_button")
-        el = self._wait_locator(self.ADD_QUERY_BTN)
+        el = self._wait_locator(self.ADD_QUERY_OPEN_BUTTON)
         if el:
             self._js_click(el)
         # self._wait_click_locator(self.ADD_QUERY_BTN)
@@ -64,58 +67,60 @@ class SqlManagerPage(BasePage):
     def enter_query_name(self, query_name: str):
         """Вводит название запроса в поле ввода."""
         self._log("enter_query_name %s", query_name)
-        inp = self._find_locator(self.ADD_QUERY_INPUT)
+        inp = self._find_locator(self.ADD_QUERY_NAME_INPUT)
         inp.clear()
         inp.send_keys(query_name)
+        self.query_name = query_name
 
     def confirm_add_query(self):
         """Подтверждает добавление запроса."""
         self._log("confirm_add_query")
-        self._js_click_locator(self.ADD_QUERY_CONFIRM)
+        self._js_click_locator(self.ADD_QUERY_CONFIRM_BUTTON)
+        self.expand_query_card(self.query_name)
         # TODO: [EXTRA] добавить проверку на ошибку создания запроса, уточнить локатор для для ошибки 
 
     def cancel_add_query(self):
         """Отменяет добавление запроса."""
         self._log("cancel_add_query")
-        self._js_click_locator(self.ADD_QUERY_CANCEL)
+        self._js_click_locator(self.ADD_QUERY_CANCEL_BUTTON)
 
 
-    QUERY_TYPE_SELECT = (
+    FILTER_TYPE_SELECT = (
         By.XPATH,
-        "//body/div[@id='text-res']/div/div/select[@id='queryTypeFilter']",
+        "//select[@data-testid='sql-manager-filter-type']"
     )
 
     def select_query_type(self, value: str = "all"):
         """Выбирает тип запросов в фильтре queryTypeFilter (all/htg/connection)."""
         self._log("select_query_type %s", value)
-        select_el = self._find_locator(self.QUERY_TYPE_SELECT)
+        select_el = self._find_locator(self.FILTER_TYPE_SELECT)
         Select(select_el).select_by_value(value)
 
 
-    CONNECTION_FILTER_SELECT = (
+    FILTER_CONNECTION_SELECT = (
         By.XPATH,
-        "//body/div[@id='text-res']/div/div/select[@id='connectionFilter']",
+        "//select[@data-testid='sql-manager-filter-connection']"
     )
 
     def select_connection_filter(self, value: str = "all"):
         """Выбирает соединение в фильтре connectionFilter (all или динамические значения)."""
         self._log("select_connection_filter %s", value)
-        select_el = self._find_locator(self.CONNECTION_FILTER_SELECT)
+        select_el = self._find_locator(self.FILTER_CONNECTION_SELECT)
         Select(select_el).select_by_value(value)
 
-    MINIMIZE_BTN = (
+    MINIMIZE_BUTTON = (
         By.XPATH,
-        "//body/div[@id='text-res']/div/div/button[@id='btnMinimizeSqlManager']",
+        "//button[@data-testid='sql-manager-minimize']"
     )
 
     def minimize(self):
         """Сворачивает окно SQL Manager."""
         self._log("minimize_sql_manager")
-        self._js_click_locator(self.MINIMIZE_BTN)
+        self._js_click_locator(self.MINIMIZE_BUTTON)
 
-    CONNECTION_LIST = (
+    CONNECTION_LIST_UL = (
         By.XPATH,
-        "//div[@id='sql_div']/div[@id='left-column']/div[@id='tree-frame']/ul",
+        "//ul[@data-testid='cm-tree-connections-list']"
     )
     CONNECTION_ITEM = (By.XPATH, ".//li[contains(@class,'connection-item')]")
     CONNECTION_TITLE = (By.XPATH, ".//span[contains(@class,'connection-title')]")
@@ -129,7 +134,7 @@ class SqlManagerPage(BasePage):
         self._log("wait_connections_ready timeout=%s", timeout)
 
         def _all_success(_):
-            list_root = self._find_locator(self.CONNECTION_LIST)
+            list_root = self._find_locator(self.CONNECTION_LIST_UL)
             items = list_root.find_elements(*self.CONNECTION_ITEM)
             if not items:
                 return False
@@ -152,7 +157,7 @@ class SqlManagerPage(BasePage):
     def expand_connection(self, connection_title: str):
         """Кликает по стрелке expand у соединения с указанным заголовком."""
         self._log("expand_connection %s", connection_title)
-        list_root = self._find_locator(self.CONNECTION_LIST)
+        list_root = self._find_locator(self.CONNECTION_LIST_UL)
         items = list_root.find_elements(*self.CONNECTION_ITEM)
         for li in items:
             title_el = li.find_element(*self.CONNECTION_TITLE)
@@ -168,7 +173,7 @@ class SqlManagerPage(BasePage):
     def select_connection(self, connection_title: str):
         """Выбирает соединение (клик по элементу), разблокируя кнопку создания запроса."""
         self._log("select_connection %s", connection_title)
-        list_root = self._find_locator(self.CONNECTION_LIST)
+        list_root = self._find_locator(self.CONNECTION_LIST_UL)
         items = list_root.find_elements(*self.CONNECTION_ITEM)
         for li in items:
             title_el = li.find_element(*self.CONNECTION_TITLE)
@@ -180,67 +185,46 @@ class SqlManagerPage(BasePage):
 
     # ---------------- Правая колонка: карточки запросов ----------------
 
-    # Правая колонка: список запросов
+    # Правая колонка: список запросов (через data-testid)
     QUERIES_CONTAINER = (
-        By.XPATH,
-        "//div[@id='right-column']/div[@id='queries_container']",
+        By.CSS_SELECTOR,
+        "[data-testid='sql-manager-queries-container']",
     )
     QUERY_CARD = (
-        By.XPATH,
-        "//div[@id='right-column']/div[@id='queries_container']/div[contains(@class,'query-card')]",
-    )
-    QUERY_CARD_HEADER = (By.XPATH, ".//div[contains(@class,'query-card-header')]")
-    QUERY_CONN_SELECT = (
-        By.XPATH,
-        ".//div[@class='query-actions-right']/select[@class='query-connection-selector']",
-    )
-    QUERY_PREVIEW_BTN = (
-        By.XPATH,
-        ".//div[@class='query-actions-right']/button[contains(@class,'btn-preview')]",
+        By.CSS_SELECTOR,
+        "div.query-card",  # у каждой карточки есть data-query-name и data-query-key
     )
     PREVIEW_LOADER = (
-        By.XPATH,
-        "//div[@class='query-preview-container']/div[@class='local-loading-overlay']",
-    )
-    EXPORT_BTN = (
-        By.XPATH,
-        "//div[@class='query-preview-footer']/button[@class='query-preview-btn btn-export']",
-    )
-    EXPORT_CLOSE_BTN = (
-        By.XPATH,
-        "//div[@class='query-preview-footer']/button[@class='query-preview-btn btn-export-close']",
+        By.CSS_SELECTOR,
+        "[data-testid^='sql-manager-query-preview-container-'] .local-loading-overlay",
     )
     EXPORT_DEST_SELECT = (
-        By.XPATH,
-        "//div[@class='dialog-content']//select[@id='export-destination-select']",
+        By.CSS_SELECTOR,
+        "[data-testid='sql-manager-export-destination']",
     )
     EXPORT_CONFIRM_BTN = (
-        By.XPATH,
-        "//div[@class='dialog-content']/div/button[@id='btn-export-confirm']",
+        By.CSS_SELECTOR,
+        "[data-testid='sql-manager-export-confirm']",
     )
     EXPORT_CANCEL_BTN = (
-        By.XPATH,
-        "//div[@class='dialog-content']/div/button[@id='btn-export-cancel']",
+        By.CSS_SELECTOR,
+        "[data-testid='sql-manager-export-cancel']",
     )
     SUCCESS_TITLE = (
-        By.XPATH,
-        "//div[@class='message-dialog success-dialog']//h3[@class='message-dialog-title']",
+        By.CSS_SELECTOR,
+        "[data-testid='messagebox-title']",
     )
     SUCCESS_TEXT = (
-        By.XPATH,
-        "//div[@class='message-dialog success-dialog']//div[@class='message-text']",
+        By.CSS_SELECTOR,
+        "[data-testid='messagebox-body']",
     )
     SUCCESS_OK_BTN = (
-        By.XPATH,
-        "//div[@class='message-dialog success-dialog']//div[@class='message-dialog-footer']/button[@class='btn btn-primary']",
-    )
-    QUERY_DELETE_BTN = (
-        By.XPATH,
-        ".//div[@class='query-actions-right']/button[contains(@class,'btn-delete')]",
+        By.CSS_SELECTOR,
+        "[data-testid='messagebox-button-OK-0']",
     )
     QUERY_EDITOR_CONTAINER = (
-        By.XPATH,
-        ".//div[@class='query-card-body']/div[@class='query-editor-container']",
+        By.CSS_SELECTOR,
+        "[data-testid^='sql-manager-query-editor-']",
     )
 
     def find_query_card(
@@ -248,13 +232,13 @@ class SqlManagerPage(BasePage):
     ):
         """Ищет карточку запроса по data-query-name/connection-name. Возвращает WebElement или None."""
         self._log("find_query_card name=%s conn=%s", query_name, connection_name)
-        xpath = self.QUERY_CARD[1]
+        css = self.QUERY_CARD[1]
         if query_name:
-            xpath += f"[@data-query-name='{query_name}']"
+            css += f"[data-query-name='{query_name}']"
         if connection_name:
-            xpath += f"[@data-connection-name='{connection_name}']"
+            css += f"[data-connection-name='{connection_name}']"
         try:
-            card = self.driver.find_element_in_frames(By.XPATH, xpath)
+            card = self.driver.find_element_in_frames(By.CSS_SELECTOR, css)
             return card
         except Exception:
             raise NoSuchElementException(
@@ -267,10 +251,13 @@ class SqlManagerPage(BasePage):
         """Ищет карточку, раскрывает если collapsed, возвращает элемент."""
         self._log("expand_query_card name=%s conn=%s", query_name, connection_name)
         card = self.find_query_card(query_name, connection_name)
-        header = card.find_element(*self.QUERY_CARD_HEADER)
+        header = self._find_child_by_testid(card, "sql-manager-query-card-header")
+        if not header:
+            header = card
         cls = card.get_attribute("class") or ""
         if "collapsed" in cls:
             header.click()
+        self.card = card
         return card
 
     def contract_query_card(
@@ -281,48 +268,49 @@ class SqlManagerPage(BasePage):
         cls = header.get_attribute("class") or ""
         if "expanded" in cls:
             header.click()
+        self.card = None
         # return card
 
-    def select_query_connection(self, card: WebElement, connection_name: str):
+    def select_query_connection(self, connection_name: str):
         """
         В карточке запроса выбирает подключение по имени в селекте query-connection-selector.
         """
         self._log("select_query_connection %s", connection_name)
-        select_el = card.find_element(*self.QUERY_CONN_SELECT)
+        select_el = self._find_child_by_testid(self.card, "sql-manager-query-connection-select")
         Select(select_el).select_by_visible_text(connection_name)
         return select_el
 
-    def click_query_preview(self, card: WebElement, timeout: int = 10):
+    def click_query_preview(self, timeout: int = 10):
         """
         Жмет кнопку предпросмотра в карточке.
         """
         self._log("click_query_preview timeout=%s", timeout)
-        btn = card.find_element(*self.QUERY_PREVIEW_BTN)
+        btn = self._find_child_by_testid(self.card, "sql-manager-query-preview")
         self._js_click(btn)
         try:
             WebDriverWait(self.driver.driver, timeout).until_not(
-                lambda d: card.find_element(*self.PREVIEW_LOADER)
+                lambda d: self.card.find_element(*self.PREVIEW_LOADER)
             )
         except TimeoutException:
             pass
         time.sleep(0.5)
         return btn
 
-    def click_query_delete(self, card: WebElement):
+    def click_query_delete(self):
         """
         Жмет кнопку удаления запроса в карточке.
         """
         self._log("click_query_delete")
-        btn = card.find_element(*self.QUERY_DELETE_BTN)
+        btn = self._find_child_by_testid(self.card, "sql-manager-query-delete")
         self._js_click(btn)
         return btn
 
-    def set_query_text(self, card: WebElement, text: str):
+    def set_query_text(self, text: str):
         """
         Устанавливает текст запроса в CodeMirror внутри карточки через JS.
         """
         self._log("set_query_text")
-        editor = card.find_element(*self.QUERY_EDITOR_CONTAINER)
+        editor = self._find_child_by_testid(self.card, "sql-manager-query-editor")
         # Пытаемся использовать CodeMirror API, если он есть
         self.driver.driver.execute_script(
             """
@@ -347,17 +335,17 @@ class SqlManagerPage(BasePage):
         return editor
 
     # -------- Экспорт предпросмотра ----------
-    def click_export(self, card: WebElement):
+    def click_export(self):
         """Жмет кнопку 'выгрузить в документ' и ждёт исчезновения лоадера."""
         self._log("click_export")
-        btn = card.find_element(*self.EXPORT_BTN)
+        btn = self._find_child_by_testid(self.card, "sql-manager-query-export")
         self._js_click(btn)
         return btn
 
-    def click_export_close(self, card: WebElement):
+    def click_export_close(self ):
         """Жмет кнопку 'выгрузить в документ и закрыть' и ждёт исчезновения лоадера."""
         self._log("click_export_close")
-        btn = card.find_element(*self.EXPORT_CLOSE_BTN)
+        btn = self._find_child_by_testid(self.card, "sql-manager-query-export-close")
         self._js_click(btn)
         return btn
 
@@ -374,8 +362,7 @@ class SqlManagerPage(BasePage):
         возвращает (title, text) из success-диалога.
         """
         self._log("confirm_export timeout=%s", timeout)
-        # btn = self._click_locator(self.EXPORT_CONFIRM_BTN)
-        btn = self._find_locator(self.EXPORT_CONFIRM_BTN)        
+        btn = self._find_locator(self.EXPORT_CONFIRM_BTN)
         ActionChains(self.driver.driver).move_to_element(btn).click().perform()
         # ждём появления лоадера
         try:
@@ -412,3 +399,30 @@ class SqlManagerPage(BasePage):
         if btn:
             self._js_click(btn)
         return btn
+
+    # ---------- helpers ---------
+    def _query_suffix(self, card: WebElement) -> Optional[str]:
+        key = card.get_attribute("data-query-key") or card.get_attribute("data-query-name")
+        if not key:
+            return None
+        return key.replace("-", "_")
+
+    def _find_child_by_testid(self, card: WebElement, prefix: str) -> WebElement:
+        """
+        Ищет элемент внутри карточки по data-testid, который начинается с prefix и содержит query-key.
+        """
+        suffix = self._query_suffix(card)
+        candidates = []
+        if suffix:
+            candidates.append(f"[data-testid='{prefix}-{suffix}']")
+            candidates.append(f"[data-testid^='{prefix}-{suffix}']")
+        candidates.append(f"[data-testid^='{prefix}-']")
+        for css in candidates:
+            try:
+                el = card.find_element(By.CSS_SELECTOR, css)
+                if el:
+                    return el
+            except Exception:
+                continue
+        # fallback: search in descendants globally
+        return self.driver.find_element_in_frames(By.CSS_SELECTOR, candidates[-1])

@@ -23,6 +23,7 @@ Primary audience: LLM/automation agents that need to set up, run, or extend the 
 - Verify chromedriver version matches embedded Chromium in OnlyOffice; reinstall if mismatch.
 - Do not store real credentials; the provided connections file is for manual import/testing only.
 - Avoid recreating deleted artifacts (`plugin.plugin`, plugin source missing in repo).
+- **Feature lifecycle:** describe every new feature proposal in `features/*.md` first; move finalized, implemented behavior into `docs/*` only after validation.
 - **Documentation hygiene:** whenever flows, scripts, or locators change, immediately update `docs/AGENT_NOTES.md` (EN), `docs/AGENT_NOTES_RU.md` (RU), and any relevant files under `docs/agent/` so instructions stay current.
 
 ## Deeper references

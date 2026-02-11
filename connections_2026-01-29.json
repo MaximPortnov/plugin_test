@@ -1,0 +1,438 @@
+{
+  "connections": [
+    {
+      "connection_key": "aec072f59c99b16a493a9d6ba791c3a6e6816c7bd183a29699782ce82c829b3c",
+      "name": "xls_sal",
+      "engine": "excel",
+      "sql": {
+        "database": null,
+        "db_schema": null,
+        "user": null,
+        "password": null,
+        "dbms_port": null,
+        "dbms_host": null,
+        "cp": null
+      },
+      "ssl": {
+        "ssl_mode": null,
+        "ssl_cert": null,
+        "ssl_key": null,
+        "ssl_root_cert": null
+      },
+      "file": {
+        "root_path": "C:\\Users\\fayzr\\Desktop\\sber\\xls_sal",
+        "pattern": "*.xls*",
+        "include_subdirectories": false,
+        "consolidate_files": false,
+        "load_to_memory": true,
+        "cache": true
+      },
+      "custom_options": {
+        "file_types": [
+          "xlsx"
+        ],
+        "filetype_options": {
+          "sheet_index": "0",
+          "table_row": "0"
+        }
+      },
+      "no_credentials": true
+    },
+    {
+      "connection_key": "48a8acae1cff307edfcb2efcea85885cd5f6d3b34b11e0e3f444d132c47baf88",
+      "name": "duckdb",
+      "engine": "duckdb",
+      "sql": {
+        "database": "/home/er77/_wrk/xldb_back/tests/data/person_address.duckdb",
+        "db_schema": null,
+        "user": "Z0FBQUFBQnBlbVFmU0YwWjVIaVdzTW85dTBTaDdCZGJZMEY2NHZQN1JTd0pheE5xaUhvTTRCbWxJNlVqbS1uLWZiazIzXzg2b3AyRkZob2NIM2l0UjR6NFl3ZVVQVWR0c1E9PQ==",
+        "password": "Z0FBQUFBQnBlbVFmOS1xM3ZGN2JMWFByNC1yemZkM3k0REU5ZzV0YlV1WGo4bU54bWRVNXJCaDNPNHV5Rklmdi12MTJ3ZFdNSVh6NG1hUFV1Vml4emctejNnNm8zYVJXM2c9PQ==",
+        "dbms_port": 0,
+        "dbms_host": "",
+        "cp": "utf8"
+      },
+      "ssl": {
+        "ssl_mode": null,
+        "ssl_cert": null,
+        "ssl_key": null,
+        "ssl_root_cert": null
+      },
+      "file": {
+        "root_path": null,
+        "pattern": null,
+        "include_subdirectories": null,
+        "consolidate_files": null,
+        "load_to_memory": null,
+        "cache": null
+      },
+      "custom_options": {},
+      "no_credentials": true
+    },
+    {
+      "connection_key": "b2619a5c570793c4057cae750f31d34caf086ba2b29233d6447bf0c812016ba4",
+      "name": "mysl",
+      "engine": "mysql",
+      "sql": {
+        "database": "adventureworks",
+        "db_schema": "adventureworks",
+        "user": "Z0FBQUFBQnBlNGRrbnluZmVYRXhZRWdyNDVCUW9CU3BvdklpajZFRkFKblkya3Ytdmc5Zy00aEhfamE4c3V4ZDdJQlRURndfbUJaUThMTkM5d29pQUJzQW9rYUY4cVZMVHc9PQ==",
+        "password": "Z0FBQUFBQnBlNGRreEFoTU1oQ1ZESDZSM0pIQWwtWDlMRlFINVRseENMd3ZmVU5MbGM5UHBIalNWUWxWdWJTazlkMkNuZ0ozczNDd3FDRmtfQmtkZy1FNGl6NTdIbkpoREI2QVMxUVBOY1lqVHVtWDhKMmI0cHc9",
+        "dbms_port": 53306,
+        "dbms_host": "89.169.162.67",
+        "cp": "utf8"
+      },
+      "ssl": {
+        "ssl_mode": null,
+        "ssl_cert": null,
+        "ssl_key": null,
+        "ssl_root_cert": null
+      },
+      "file": {
+        "root_path": null,
+        "pattern": null,
+        "include_subdirectories": null,
+        "consolidate_files": null,
+        "load_to_memory": null,
+        "cache": null
+      },
+      "custom_options": {},
+      "no_credentials": false
+    },
+    {
+      "connection_key": "bc0d16b6e3812b1b1c9e10225e57d638a23c35d6c123ed3ebc0eceaa28767665",
+      "name": "pgl",
+      "engine": "postgres",
+      "sql": {
+        "database": "postgres",
+        "db_schema": "person",
+        "user": "Z0FBQUFBQnBlNGRrbkp5VG1mSEp4bjkzbTRUMk9zRnpFbXRMZ1RmdC15M3pWM2VrOTV1bUVzclNJanRoeUxfMmd2cTlLV1hvcklVSkNQWDZsdVdYa29pQktyN3lrT2t3OFE9PQ==",
+        "password": "Z0FBQUFBQnBlNGRrM2lOY1pCck9JRjN4Y0lwa0o5amhNNHRjRXNfMVZnN09OY2dfVnhUNGwwb3pLVFY4eklTdWU3SEJSY2phOGF0UE1TX3RBMHpteXJ2NGxmNFhZdXFPMzI1LTltdGUwMFI5QWgzUEZkX2ttZGs9",
+        "dbms_port": 55432,
+        "dbms_host": "89.169.162.67",
+        "cp": "utf8"
+      },
+      "ssl": {
+        "ssl_mode": null,
+        "ssl_cert": null,
+        "ssl_key": null,
+        "ssl_root_cert": null
+      },
+      "file": {
+        "root_path": null,
+        "pattern": null,
+        "include_subdirectories": null,
+        "consolidate_files": null,
+        "load_to_memory": null,
+        "cache": null
+      },
+      "custom_options": {},
+      "no_credentials": false
+    },
+    {
+      "connection_key": "35ae3cba9cf7c2108f0d26f14f2dc9ddc4256939aa8e8a06f760c52d3c246a59",
+      "name": "ora",
+      "engine": "oracle",
+      "sql": {
+        "database": "FREE",
+        "db_schema": "C#AdvWorks",
+        "user": "Z0FBQUFBQnBlNGRrT1RCUGhBRHBUMjB0anhhZmt6WWJPRi1KbmllT1l3NlpMZ0NFdE5sbkNVZ3BHdmhPVjRMdnJBekdRaTVOVnpOdGxEZnFzZnBCWVRRUGkxOS0wY2RDRVE9PQ==",
+        "password": "Z0FBQUFBQnBlNGRrNVcyNTBKb2pEWHNXeURjMVg3czlPR2QwRlRWR3ZPQUYwd0ZwMVRlSXJPelJFSlpZX1BnaDlfcjhyd2wxWVkyM1ZVRlJQeHJhck1lOGd4OVZCZzE2UWc9PQ==",
+        "dbms_port": 51521,
+        "dbms_host": "89.169.162.67",
+        "cp": "utf8"
+      },
+      "ssl": {
+        "ssl_mode": null,
+        "ssl_cert": null,
+        "ssl_key": null,
+        "ssl_root_cert": null
+      },
+      "file": {
+        "root_path": null,
+        "pattern": null,
+        "include_subdirectories": null,
+        "consolidate_files": null,
+        "load_to_memory": null,
+        "cache": null
+      },
+      "custom_options": {},
+      "no_credentials": false
+    },
+    {
+      "connection_key": "7b9b65949f9b61a6982fc10ab56eeccd7426965265b342818837fb281ce8f04a",
+      "name": "pgl_mtls",
+      "engine": "postgres_mtls",
+      "sql": {
+        "database": "postgres",
+        "db_schema": "postgres",
+        "user": "Z0FBQUFBQnBlNGRrZmY2aEZmUk5VYjBKS3pYOFBEWmVnYnJQT1dOR0Z2QV9MbEVsTkYzaFRwb0Y0dnQtcFhXem5MMF9vTnNwZHNfQ1VQTEU5ZjFDZ1VtNnk2UDc4WnE4RGc9PQ==",
+        "password": "Z0FBQUFBQnBlNGRrR1lLQ1hWaTJrbG1HSU1WbmktVE4xTDVfcVdpNGw5ZGNfUmR3N0hjY3JaQjZScmYwTU5GUTZob1lwbnZFQVRUYThoeXh4ZVNfUEttUEo0bEt1SE5vQV9BMXl2Z0NOTXpvaHFfMEN3QjNQUkU9",
+        "dbms_port": 45432,
+        "dbms_host": "89.169.162.67",
+        "cp": "utf8"
+      },
+      "ssl": {
+        "ssl_mode": "require",
+        "ssl_cert": "/home/er77/_wrk/xldb_back/tests/data/pg_mtls/keys/server.crt",
+        "ssl_key": "/home/er77/_wrk/xldb_back/tests/data/pg_mtls/keys/server.key",
+        "ssl_root_cert": null
+      },
+      "file": {
+        "root_path": null,
+        "pattern": null,
+        "include_subdirectories": null,
+        "consolidate_files": null,
+        "load_to_memory": null,
+        "cache": null
+      },
+      "custom_options": {},
+      "no_credentials": false
+    },
+    {
+      "connection_key": "f9dd175a743f70c7be4eaa3606d041fd2afa419cc4501aa3014f0df62ca721f5",
+      "name": "csv_cli",
+      "engine": "csv",
+      "sql": {
+        "database": null,
+        "db_schema": null,
+        "user": null,
+        "password": null,
+        "dbms_port": null,
+        "dbms_host": null,
+        "cp": null
+      },
+      "ssl": {
+        "ssl_mode": null,
+        "ssl_cert": null,
+        "ssl_key": null,
+        "ssl_root_cert": null
+      },
+      "file": {
+        "root_path": "/home/er77/_wrk/xldb_back/tests/data/courses_en.csv",
+        "pattern": "*.csv",
+        "include_subdirectories": false,
+        "consolidate_files": false,
+        "load_to_memory": true,
+        "cache": true
+      },
+      "custom_options": {
+        "auto_detect": true
+      },
+      "no_credentials": true
+    },
+    {
+      "connection_key": "248d779b0d822c9853a2a9d4a28dc5f3b8be712b98987576b9e9a7e573fc037b",
+      "name": "xlsb",
+      "engine": "excel_binary",
+      "sql": {
+        "database": null,
+        "db_schema": null,
+        "user": null,
+        "password": null,
+        "dbms_port": null,
+        "dbms_host": null,
+        "cp": null
+      },
+      "ssl": {
+        "ssl_mode": null,
+        "ssl_cert": null,
+        "ssl_key": null,
+        "ssl_root_cert": null
+      },
+      "file": {
+        "root_path": "/home/er77/_wrk/xldb_back/tests/data/from_person_address_362b.xlsb",
+        "pattern": "*.xlsb",
+        "include_subdirectories": false,
+        "consolidate_files": false,
+        "load_to_memory": true,
+        "cache": true
+      },
+      "custom_options": {
+        "sheet_id": "0"
+      },
+      "no_credentials": true
+    },
+    {
+      "connection_key": "a4d09c1ff34dcdfc180049e7f7aace1cd11d584bfe8f32116d4a9948c70110e7",
+      "name": "Mondrian",
+      "engine": "xmla_proxy",
+      "sql": {
+        "database": "FoodMart",
+        "db_schema": null,
+        "user": "Z0FBQUFBQnBlNGRrZmtRbjhuVW1aMXg3czhQUEVfcVRwVERNcXJlVHNzREQ3VmxTLXBhV0FIeWVTc3FBcW41OXBzZmR0dzFzd2xxN0xXeXd4TFQ1Y3VxaXlfZURha2YtaWJueGdHOFNaNkk2ZW9Gd3V2SnBpN05GeXg4c3lrcWx4aktzei1QM3FiSGI0Y3lQY3p1MzZ2aV9XLVlEOHY1NmFIdUo2ZVdVcFpUUF9IeVhFRE0wUTNJSkc4STJzWHlHOXRTTnFWc1NIc0wxRzVUa1FwbWRUaF9Jam1sUlVEVENaVTBteUVJQUFEaHRtTjR3ZkdIU3hlTm9ZMGo3dWRia3AzMmtyMGhUTlk3Zw==",
+        "password": "Z0FBQUFBQnBlNGRrZnhDWnlkMHZTeHlha1ZBLW5PMW9jSzh6cmx6U1ZzbHZCSkREdVVFbm5WdUt5bjFmTXF0Wk1ObWdJc3Z3a29HTlVtdURMeXpjU1Y5c3dLb1htb200NXd2Rlg5Ql9ZMmZEZWp4Uno5UjhXWEROVjRLdTd5X1hIRzJxZlh5Q0k1OFpkamN0dTFESS0wMXZTaXhiMDJBd1hSbnFZNEJxV3RLYURpWTNiaExUWE1HNzdGTzFPVUdVX2VyMjRHd0dGWS1yRldRSDNXdFNMS0sxOF9OT2wycUlFclhaRVBxRllTZkpRN3EwcF9fcVBFUWtmQWgtTVpqMWZrc0JCTDM2ZllZTg==",
+        "dbms_port": null,
+        "dbms_host": "http://89.169.162.67:58888/emondrian/xmla",
+        "cp": "utf8"
+      },
+      "ssl": {
+        "ssl_mode": "",
+        "ssl_cert": "",
+        "ssl_key": "",
+        "ssl_root_cert": ""
+      },
+      "file": {
+        "root_path": "",
+        "pattern": "",
+        "include_subdirectories": false,
+        "consolidate_files": false,
+        "load_to_memory": false,
+        "cache": false
+      },
+      "custom_options": {},
+      "no_credentials": false
+    },
+    {
+      "connection_key": "ce4e8dd05234c4de703cf0d74b433f190c406b69cfb6acd4da8eba1dd834aeb9",
+      "name": "FlexMonster",
+      "engine": "xmla_proxy",
+      "sql": {
+        "database": "Adventure Works DW Standard Edition",
+        "db_schema": null,
+        "user": "Z0FBQUFBQnBlNGRrQnlSMnhwUHRWVDI0a0duY0hjY3ZYLXl0bWhvZDk0UWkyR05vV1JUN1ZmcUlJajlaeWROazJrRVhYMlN0dWoybnJEaHFwa2dVWmFwLW13Mmxrbk53a295ZEs2Q1M4NHp4STNfaFI5TmNya2lpVXI0ZUFNekFzcmxnQTJjSkhZUnJaNndYbDFGYjg4MHdsQTFOM2poVThXOHlfczVCMkVlWGtTOEI1SHNTZms5d1F0LWozYTVVcTRQbGk0eHdDVkt3NnduTlNXV3BoRVd0MVN2ZndUanI0X3Z4OXdhVDhoOS1pMFpUSmFGREZUTVlXX2tnWWVMZ2IwbG1JXzN3LUExag==",
+        "password": "Z0FBQUFBQnBlNGRrVi14YTFFOE9TeGtXTHdUSlV1Q0dlWFBRLV91T25YTTJMYjJXSy1KVGs3cGk0N3RaX1ctMjZXMUlPTHE0Ry1xckw4QlFfYlY5U2lVMC1DZjJuMnNfaXVJUldCLW9NS1pmY25JV1VCWnZIRnZzbU55NlJjdThqWGJVTnVoUFdadF9tTU1hZDdqQUhRanZEVEdUX2JKSElsVWo3b1hYaEV3VkNMcm43aFJJMjA5ZTVnaDZqQWtrckR5WHFQSTR5X1k3R2FmRE5SVU1CN0JHd0NjRGZROW4tdXVLazRBaVlSR0R4dHF4RE5fSUJ4d2RBYkxEVU9hdHY1R3pRbTliTkN4bQ==",
+        "dbms_port": null,
+        "dbms_host": "https://olap.flexmonster.com/olap/msmdpump.dll",
+        "cp": "utf8"
+      },
+      "ssl": {
+        "ssl_mode": "",
+        "ssl_cert": "",
+        "ssl_key": "",
+        "ssl_root_cert": ""
+      },
+      "file": {
+        "root_path": "",
+        "pattern": "",
+        "include_subdirectories": false,
+        "consolidate_files": false,
+        "load_to_memory": false,
+        "cache": false
+      },
+      "custom_options": {},
+      "no_credentials": false
+    },
+    {
+      "connection_key": "5f10589d917262ddb8852401d379f8fbdc9fd6d21765da7e3939aea80ccecd20",
+      "name": "parquet",
+      "engine": "parquet",
+      "sql": {
+        "database": null,
+        "db_schema": null,
+        "user": null,
+        "password": null,
+        "dbms_port": null,
+        "dbms_host": null,
+        "cp": null
+      },
+      "ssl": {
+        "ssl_mode": null,
+        "ssl_cert": null,
+        "ssl_key": null,
+        "ssl_root_cert": null
+      },
+      "file": {
+        "root_path": "/home/er77/_wrk/xldb_back/tests/data/person_address.parquet",
+        "pattern": "*.parquet",
+        "include_subdirectories": false,
+        "consolidate_files": false,
+        "load_to_memory": true,
+        "cache": true
+      },
+      "custom_options": {},
+      "no_credentials": true
+    },
+    {
+      "connection_key": "bac0ddf0a6b7d28c18cd288430dbf52883257a87ad81a32d85c1f9f30dc604a1",
+      "name": "clickhouse",
+      "engine": "clickhouse",
+      "sql": {
+        "database": "default",
+        "db_schema": null,
+        "user": "Z0FBQUFBQnBlNGRrV3ZsS3NqdWNRcjkxNzJCQU1kV2lXdkw1QUdJWGJnYUpDd0hkbVNsR25JUVAxWkljVGZuTGFBbGtCVDFVY01LRDhzc2lQTzl6ZVR1TUVQYWNvWnNDQkE9PQ==",
+        "password": "Z0FBQUFBQnBlNGRrdm5vYXJrNHVXTFhvZWpkZmhXdnJFRVJoTFZrNUxJa2VVQ1FUa3V4SE1zSFdMb1NTbC10WHNiRFpBcUVTNjAtNmpKSHdxUW44eGpsZUVJUU1NTTNFZEE9PQ==",
+        "dbms_port": 9440,
+        "dbms_host": "https://play.clickhouse.com",
+        "cp": "utf8"
+      },
+      "ssl": {
+        "ssl_mode": null,
+        "ssl_cert": null,
+        "ssl_key": null,
+        "ssl_root_cert": null
+      },
+      "file": {
+        "root_path": null,
+        "pattern": null,
+        "include_subdirectories": null,
+        "consolidate_files": null,
+        "load_to_memory": null,
+        "cache": null
+      },
+      "custom_options": {},
+      "no_credentials": false
+    },
+    {
+      "connection_key": "f16dde97407fc379edc4abcfef5879c3fc4efb55e2b156a0623e31d64d23afcb",
+      "name": "mssql",
+      "engine": "mssql",
+      "sql": {
+        "database": "AdventureWorksDW",
+        "db_schema": "dbo",
+        "user": "Z0FBQUFBQnBlNGRrZDRHMUlTRi1WeFk5bno3SXpvdDhWSmhiVlIzS0wzN2FNVWVSTUgtNGNPVTJLVUl6WDdwZ3pQajl0VzlhemFuM0YxdzlCdlFIa3d4YmdmdXdLRDNFMHc9PQ==",
+        "password": "Z0FBQUFBQnBlNGRrWlFrMUJid21GNnZZclpiQjVfc3pGUkZ6NzZVQWczWENwc3JIRVBYWlJtZDNtd3hISEluSUFjdjdtVURESDZtaWc1MnJoZDJlUWJBeG0tVjFGYzFDeWdNcTAtc0NKY1lUWGJXd1k0X0VPcjA9",
+        "dbms_port": 51433,
+        "dbms_host": "89.169.162.67",
+        "cp": "utf8"
+      },
+      "ssl": {
+        "ssl_mode": null,
+        "ssl_cert": null,
+        "ssl_key": null,
+        "ssl_root_cert": null
+      },
+      "file": {
+        "root_path": null,
+        "pattern": null,
+        "include_subdirectories": null,
+        "consolidate_files": null,
+        "load_to_memory": null,
+        "cache": null
+      },
+      "custom_options": {},
+      "no_credentials": false
+    },
+    {
+      "connection_key": "c11cd50fbbac971f0fd6be6c6dc69c689d2da80925ca918cccfcc1eccfb95608",
+      "name": "ADV",
+      "engine": "duckdb",
+      "sql": {
+        "database": "/home/er77/_wrk/xldb_back/tests/data/ROLAP/AV/AdventureWorksDW.duckdb",
+        "db_schema": null,
+        "user": "Z0FBQUFBQnBlMFBnaFc1bmJMc3kyM2ltejNFZmk2UGpkMEdHTWVsRWIxX2FTMy1aWXF1SGdvRGZfN0I0Tko0Wkl2a0pUanpCRXRWQlVUZkZjQUxNazg3Yk9UckkzLVNoRkE9PQ==",
+        "password": "Z0FBQUFBQnBlMFBnQUNIOGN6R1FIYUo3cjZQZ0VuNHZJRUJfSWtfM1hvdXlEb21hRkxOVWpzaVY5TXBRV1RBVHRqMF9UVko2VWJtd1lfZ1RIOC1lWDhmMU1wRmU3Y2JyVlE9PQ==",
+        "dbms_port": 0,
+        "dbms_host": "",
+        "cp": null
+      },
+      "ssl": {
+        "ssl_mode": null,
+        "ssl_cert": null,
+        "ssl_key": null,
+        "ssl_root_cert": null
+      },
+      "file": {
+        "root_path": null,
+        "pattern": null,
+        "include_subdirectories": null,
+        "consolidate_files": null,
+        "load_to_memory": null,
+        "cache": null
+      },
+      "custom_options": {},
+      "no_credentials": true
+    }
+  ],
+  "settings": [],
+  "settings_links": []
+}

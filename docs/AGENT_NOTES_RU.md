@@ -13,6 +13,7 @@
 - `src/utils/timer.py` — таймер (`Timer.start()`, `mark()`, `step()`, `summary()`).
 - `src/utils/logging_utils.py` — настройка логов (консоль + файл `artifacts/logs/run-<ts>.log`, env `LOG_LEVEL`/`LOG_DIR`).
 - `src/utils/visual.py` — `assert_screenshot` (baseline/actual/diff в `artifacts/visual`, env `VISUAL_MODE=update`).
+- `src/interaction_log_executor.py` — исполнитель JSONL-логов (`InteractionLogExecutor`) с обработчиками по `event/action` и хуками по `seq`.
 - `connections_2026-01-22.json` — тестовые подключения; импортировать вручную в плагин.
 - `scripts/` — настройка venv, chromedriver, запуск OnlyOffice, запуск тестов.
 - `.vscode/launch.json` — отладка текущего файла в VS Code.
@@ -50,11 +51,20 @@ PowerShell пример:
 ```
 Если OnlyOffice уже запущен с нужным портом, запускать повторно не нужно.
 
+Запуск replay без pytest:
+```powershell
+python -m src.interaction_log_executor --log .\interaction-log-1770560528478.jsonl
+```
+Полезные флаги:
+- `--dry-parse` (только парсинг, без Selenium)
+- `--no-prepare` (пропустить стандартные pre-step: открытие ячейки и панели плагина)
+
 ## 7. Правила для агента
 - Не хранить пароли открыто; файл соединений закодирован, но не зашифрован.
 - Локаторы держать в Page Object’ах, а не в тестах.
 - Перед запуском убедиться, что версия chromedriver совпадает с встроенным Chromium/OnlyOffice.
 - Удалять артефакты вида `plugin.plugin`; исходников плагина в репо нет.
+- Жизненный цикл фич: каждую новую фичу сначала описывать в `features/*.md`; в `docs/*` переносить только после реализации и валидации.
 
 ## 8. Дальнейшие задачи
 - При необходимости метрик используйте `Timer` из `src/utils/timer.py` для замеров вкладок/шагов (`start()` → `mark()/step()` → `summary()`).
@@ -62,6 +72,9 @@ PowerShell пример:
 - Поддерживать отдельные файлы документации RU/EN.
 
 ## 9. Troubleshooting
+- `src/interaction_log_executor.py` — исполнитель JSONL-логов в порядке строк файла с fail-fast политикой (первая ошибка останавливает прогон).
+- Клавиатурные события (`keydown`, `keyup`, `keypress`) по умолчанию пропускаются.
+- В v1 лог не обрезается по последней `seq`-сессии: выполняется весь файл по порядку.
 - `SessionNotCreatedException`: почти всегда несовместимая версия chromedriver — переустановите через `install_chromedriver.ps1`.
 - Не находятся элементы: убедитесь, что активна нужная вкладка/iframe; используйте `find_element_in_frames`.
 - Порт 9222 занят: завершите процесс или запустите на другом порту и передайте `debugger_address` в `DriverOnlyOffice`.
